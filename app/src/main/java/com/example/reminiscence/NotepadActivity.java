@@ -16,7 +16,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 
 public class NotepadActivity extends AppCompatActivity {
-    EditText EditText1;
+    EditText CreateNote;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,19 +28,17 @@ public class NotepadActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                Save("Note.txt");
             }
         });
 
-        EditText1 = (EditText) findViewById(R.id.EditText1);
-        EditText1.setText("Write your note");
+        CreateNote = (EditText) findViewById(R.id.CreateNote);
     }
     public void Save(String fileName) {
         try {
             OutputStreamWriter out =
                     new OutputStreamWriter(openFileOutput(fileName, 0));
-            out.write(String.valueOf(EditText1));
+            out.write(String.valueOf(CreateNote));
             out.close();
             Toast.makeText(this, "Note Saved!", Toast.LENGTH_SHORT).show();
         } catch (Throwable t) {
@@ -62,7 +60,7 @@ public class NotepadActivity extends AppCompatActivity {
                     String str;
                     StringBuilder buf = new StringBuilder();
                     while ((str = reader.readLine()) != null) {
-                        buf.append(str + "\n");
+                        buf.append(str).append("\n");
                     } in .close();
                     content = buf.toString();
                 }
