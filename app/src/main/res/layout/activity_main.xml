@@ -6,71 +6,71 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TableLayout
-        android:layout_width="303dp"
-        android:layout_height="551dp"
+    <Button
+        android:id="@+id/resources_button"
+        android:layout_width="180dp"
+        android:layout_height="200dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="232dp"
+        android:onClick="onResourcesClick"
+        android:text="Resources"
+        android:textColor="#000000"
+        app:backgroundTint="#F44336"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/map_button" />
+
+    <Button
+        android:id="@+id/map_button"
+        android:layout_width="180dp"
+        android:layout_height="200dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginBottom="232dp"
+        android:onClick="onMapClick"
+        android:text="Map"
+        android:textColor="#000000"
+        app:backgroundTint="#2196F3"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/resources_button"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/notepad_button"
+        android:layout_width="180dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="72dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:onClick="onNotepadClick"
+        android:text="Notepad"
+        android:textColor="#000000"
+        app:backgroundTint="#FFC107"
+        app:layout_constraintBottom_toTopOf="@+id/resources_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/alarm_button"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <Button
+        android:id="@+id/alarm_button"
+        android:layout_width="180dp"
+        android:layout_height="200dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:onClick="onAlarmClick"
+        android:text="Alarm"
+        android:textColor="#000000"
+        app:backgroundTint="#8BC34A"
+        app:layout_constraintBottom_toTopOf="@+id/map_button"
+        app:layout_constraintEnd_toStartOf="@+id/notepad_button"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <TableRow
-            android:id="@+id/top"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <Button
-                android:id="@+id/alarm_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Alarm"
-                android:textColor="#000000"
-                android:onClick="onAlarmClick"
-                app:backgroundTint="#8BC34A" />
-
-            <Button
-                android:id="@+id/resources_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Resources"
-                android:textColor="#000000"
-                android:onClick="onResourcesClick"
-                app:backgroundTint="#F44336" />
-        </TableRow>
-
-        <TableRow
-            android:id="@+id/bottom"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <Button
-                android:id="@+id/map_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Map"
-                android:onClick="onMapClick"
-                android:textColor="#000000"
-                app:backgroundTint="#2196F3" />
-
-            <Button
-                android:id="@+id/notepad_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Notepad"
-                android:onClick="onNotepadClick"
-                android:textColor="#000000"
-                app:backgroundTint="#FFC107" />
-        </TableRow>
-
-    </TableLayout>
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
