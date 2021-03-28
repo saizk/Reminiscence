@@ -2,6 +2,8 @@ package com.example.reminiscence;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -20,9 +22,9 @@ public class ResourcesActivity extends AppCompatActivity {
     };
 
     String[] subtitle ={
-            "www.ceafa.es","www.alzfae.es",
-            "www.fpmaragall.org","www.fafal.org",
-            "www.alz.org/es",
+            "www.ceafa.es (CLICK ME)","www.alzfae.es (CLICK ME)",
+            "www.fpmaragall.org (CLICK ME)","www.fafal.org (CLICK ME)",
+            "www.alz.org/es (CLICK ME)",
     };
 
     Integer[] imgid={
@@ -47,27 +49,34 @@ public class ResourcesActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 // TODO Auto-generated method stub
                 if(position == 0) {
-                    //code specific to first list item
-                    Toast.makeText(getApplicationContext(),"Place Your First Option Code",Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(Intent.ACTION_VIEW);
+                    intent.setData(Uri.parse("http://www.ceafa.es"));
+                    startActivity(intent);
                 }
 
                 else if(position == 1) {
-                    //code specific to 2nd list item
-                    Toast.makeText(getApplicationContext(),"Place Your Second Option Code",Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(Intent.ACTION_VIEW);
+                    intent.setData(Uri.parse("http://www.alzfae.es"));
+                    startActivity(intent);
                 }
 
                 else if(position == 2) {
 
-                    Toast.makeText(getApplicationContext(),"Place Your Third Option Code",Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(Intent.ACTION_VIEW);
+                    intent.setData(Uri.parse("http://www.fpmaragall.org"));
+                    startActivity(intent);
                 }
                 else if(position == 3) {
 
-                    Toast.makeText(getApplicationContext(),"Place Your Forth Option Code",Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(Intent.ACTION_VIEW);
+                    intent.setData(Uri.parse("http://www.fafal.org"));
+                    startActivity(intent);
                 }
                 else if(position == 4) {
 
-                    Toast.makeText(getApplicationContext(),"Place Your Fifth Option Code",Toast.LENGTH_SHORT).show();
-                }
+                    Intent intent = new Intent(Intent.ACTION_VIEW);
+                    intent.setData(Uri.parse("http://www.alz.org/es"));
+                    startActivity(intent);                }
 
             }
         });
