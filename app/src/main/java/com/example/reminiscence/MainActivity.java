@@ -32,4 +32,9 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void onGalleryClick(View view){
+        Intent intent = new Intent(this, GalleryActivity.class);
+        startActivity(intent);
+    }
+
 }
