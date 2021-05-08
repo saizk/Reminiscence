@@ -71,7 +71,7 @@
                         android:textSize="20sp"
                         android:text="ALARM"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="wrap_content"></TextView>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -99,7 +99,7 @@
                         android:textSize="20sp"
                         android:text="NOTES"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="wrap_content"></TextView>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
             <androidx.cardview.widget.CardView
@@ -126,7 +126,7 @@
                         android:textSize="20sp"
                         android:text="MAP"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="wrap_content"></TextView>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
             <androidx.cardview.widget.CardView
@@ -153,7 +153,7 @@
                         android:textSize="20sp"
                         android:text="INFO"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="wrap_content"></TextView>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
             <androidx.cardview.widget.CardView
@@ -180,7 +180,7 @@
                         android:textSize="20sp"
                         android:text="GALLERY"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="wrap_content"></TextView>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
             <androidx.cardview.widget.CardView
@@ -207,7 +207,7 @@
                         android:textSize="20sp"
                         android:text="HELP!"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="wrap_content"></TextView>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
