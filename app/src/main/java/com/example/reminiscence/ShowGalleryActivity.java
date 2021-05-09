@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 
-public class GalleryNames extends AppCompatActivity {
+public class ShowGalleryActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
     RecyclerView.Adapter RvGalleryAdapter;
