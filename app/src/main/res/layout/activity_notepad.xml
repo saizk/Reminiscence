@@ -5,7 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".NotepadActivity">
+    tools:context=".NotepadActivity"
+    android:background="@drawable/ui_notepad_background">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_height="wrap_content"
@@ -20,6 +21,30 @@
             app:popupTheme="@style/Theme.Reminiscence.PopupOverlay" />
 
     </com.google.android.material.appbar.AppBarLayout>
+
+    <RelativeLayout
+        android:layout_marginTop="35dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        >
+
+        <ImageView
+            android:src="@drawable/ui_notepad"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true">
+        </ImageView>
+
+
+
+
+
+
+    </RelativeLayout>
+
 
     <EditText
         android:layout_width="match_parent"
