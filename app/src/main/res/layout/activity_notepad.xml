@@ -9,19 +9,7 @@
     android:background="@drawable/ui_notepad_background"
     android:orientation="vertical" >
 
-    <com.google.android.material.appbar.AppBarLayout
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:theme="@style/Theme.Reminiscence.AppBarOverlay">
 
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                android:background="?attr/colorPrimary"
-                app:popupTheme="@style/Theme.Reminiscence.PopupOverlay" />
-
-        </com.google.android.material.appbar.AppBarLayout>
 
         <RelativeLayout
             android:layout_marginTop="35dp"
