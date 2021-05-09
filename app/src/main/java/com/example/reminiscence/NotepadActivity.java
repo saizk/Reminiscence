@@ -10,9 +10,9 @@ import android.database.Cursor;
 import android.view.View;
 
 import android.widget.AdapterView;
-import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
+import android.widget.EditText;
 
 
 public class NotepadActivity extends AppCompatActivity {

@@ -1,12 +1,15 @@
 package com.example.reminiscence;
 
+import android.content.DialogInterface;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class EditActivity extends AppCompatActivity {
@@ -19,8 +22,6 @@ public class EditActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        // infla el layout
         setContentView(R.layout.activity_edit);
 
         // obtiene referencia a los tres views que componen el layout
@@ -51,22 +52,11 @@ public class EditActivity extends AppCompatActivity {
         }
     }
 
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        // Gestiona la seleccion de opciones en el menú
-//        int id = item.getItemId();
-//        if (id == R.id.action_delete) {
-//            if (mRowId != null) {
-//                dbAdapter.deleteNote(mRowId);
-//            }
-//            setResult(RESULT_OK);
-//            dbAdapter.close();
-//            finish();
-//        }
-//        return super.onOptionsItemSelected(item);
-//    }
+    public void deleteNoteHandler(View view){
+        alertDialog("Do you want to delete this note?");
+    }
 
-    public void deleteNote(View view){
+    public void deleteNote(){
         if (mRowId != null) {
             dbAdapter.deleteNote(mRowId);
         }
@@ -79,6 +69,11 @@ public class EditActivity extends AppCompatActivity {
         String title = mTitleText.getText().toString();
         String body = mBodyText.getText().toString();
 
+        if (title.length() == 0 || body.length() == 0) {
+            alertDialog("Please fill the title and the body");
+            return;
+        }
+
         if (mRowId == null) {
             long id = dbAdapter.createNote(title, body);
             if (id > 0) {
@@ -90,5 +85,26 @@ public class EditActivity extends AppCompatActivity {
         setResult(RESULT_OK);
         dbAdapter.close();
         finish();
+    }
+
+    private void alertDialog(String message) {
+        AlertDialog.Builder dialog=new AlertDialog.Builder(this);
+        dialog.setMessage(message);
+        dialog.setTitle("Reminiscence");
+        dialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int which) {
+                    if (message.endsWith("?")){
+                        deleteNote();
+                    };
+                }
+            });
+        if (message.endsWith("?")){
+            dialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int which) {
+                }
+            });
+        }
+        AlertDialog alertDialog=dialog.create();
+        alertDialog.show();
     }
 }
