@@ -27,9 +27,10 @@
     </RelativeLayout>
 
     <ListView android:id="@+id/id_list_view"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_gravity="bottom"/>
+        android:layout_width="match_parent"
+        android:layout_height="450dp"
+        android:layout_gravity="bottom">
+    </ListView>
 
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton

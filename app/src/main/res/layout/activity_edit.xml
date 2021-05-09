@@ -12,34 +12,47 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/edit_title">
+            android:textSize="40sp"
+            android:layout_marginLeft="5dp"
+            android:text="@string/edit_title"
+            android:layout_marginStart="5dp">
         </TextView>
         <EditText
             android:id="@+id/title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1">
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:gravity="center_vertical|center_horizontal"
+            android:layout_weight="10"
+            android:textSize="40sp">
         </EditText>
     </LinearLayout>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/edit_body">
-    </TextView>
     <EditText
         android:id="@+id/body"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_weight="1"
-        android:scrollbars="vertical">
+        android:scrollbars="vertical"
+        android:textSize="20sp">
     </EditText>
     <Button
         android:id="@+id/confirm"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="saveNote"
-        android:text="@string/edit_confirm">
+        android:backgroundTint="@color/article_title"
+        android:text="@string/edit_confirm"
+        android:textSize="40sp">
+    </Button>
+
+    <Button
+        android:id="@+id/delete_note"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="deleteNote"
+        android:text="@string/delete_note"
+        android:backgroundTint="@color/maroon"
+        android:textSize="20sp">
     </Button>
 
 </LinearLayout>
