@@ -6,60 +6,50 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".NotepadActivity"
-    android:background="@drawable/ui_notepad_background">
+    android:background="@drawable/ui_notepad_background"
+    android:orientation="vertical" >
 
     <com.google.android.material.appbar.AppBarLayout
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:theme="@style/Theme.Reminiscence.AppBarOverlay">
-
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
+            android:layout_height="wrap_content"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:popupTheme="@style/Theme.Reminiscence.PopupOverlay" />
+            android:theme="@style/Theme.Reminiscence.AppBarOverlay">
 
-    </com.google.android.material.appbar.AppBarLayout>
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/colorPrimary"
+                app:popupTheme="@style/Theme.Reminiscence.PopupOverlay" />
 
-    <RelativeLayout
-        android:layout_marginTop="35dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
-        >
+        </com.google.android.material.appbar.AppBarLayout>
 
-        <ImageView
-            android:src="@drawable/ui_notepad"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true">
-        </ImageView>
+        <RelativeLayout
+            android:layout_marginTop="35dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="150dp">
 
+            <ImageView
+                android:src="@drawable/ui_notepad"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true">
+            </ImageView>
 
+        </RelativeLayout>
 
-
-
-
-    </RelativeLayout>
-
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:hint="Write your note..."
-        android:gravity="center"
-        android:id="@+id/CreateNote"
-        app:layout_constraintTop_toTopOf="parent"/>
+    <ListView android:id="@+id/id_list_view"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@android:drawable/ic_dialog_email" />
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="@dimen/fab_margin"
+            app:srcCompat="@android:drawable/ic_dialog_email" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
