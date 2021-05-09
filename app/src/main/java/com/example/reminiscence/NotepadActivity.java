@@ -4,13 +4,10 @@ import android.os.Bundle;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.database.Cursor;
 import android.view.View;
-import android.view.Menu;
-import android.view.MenuItem;
 
 import android.widget.AdapterView;
 import android.widget.EditText;
@@ -39,14 +36,14 @@ public class NotepadActivity extends AppCompatActivity {
         // la nota con el id correspondiente
         m_listview = (ListView) findViewById(R.id.id_list_view);
         m_listview.setOnItemClickListener(
-                new AdapterView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> arg0, View view, int position, long id) {
-                        Intent i = new Intent(view.getContext(), EditActivity.class);
-                        i.putExtra(NotesDbAdapter.KEY_ROWID, id);
-                        startActivityForResult(i, ACTIVITY_EDIT);
-                    }
+            new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> arg0, View view, int position, long id) {
+                    Intent i = new Intent(view.getContext(), EditActivity.class);
+                    i.putExtra(NotesDbAdapter.KEY_ROWID, id);
+                    startActivityForResult(i, ACTIVITY_EDIT);
                 }
+            }
         );
 
         // rellenamos el listview con los títulos de todas las notas en la BD
@@ -68,32 +65,7 @@ public class NotepadActivity extends AppCompatActivity {
         m_listview.setAdapter(notes);
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Se recrea el menu que aparece en ActionBar de la actividad.
-        getMenuInflater().inflate(R.menu.menu_notepad, menu);
-        return true;
-    }
-
-    // con AppCompatActivity hay que sobreescribir onOptionsItemSelected en lugar de
-    // onMenuItemSelected para gestionar el menú
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Gestiona la seleccion de opciones en el menú
-        int id = item.getItemId();
-        if (id == R.id.action_insert) {
-            createNote();
-            return true;
-        }
-
-        if (id == R.id.action_about) {
-            System.out.println("APPMOV: About action...");
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
-    private void createNote() {
+    public void createNote(View view) {
         Intent i = new Intent(this, EditActivity.class);
         startActivityForResult(i, ACTIVITY_CREATE);
     }

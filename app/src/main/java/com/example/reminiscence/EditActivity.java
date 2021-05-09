@@ -2,7 +2,6 @@ package com.example.reminiscence;
 
 import android.database.Cursor;
 import android.os.Bundle;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -52,33 +51,29 @@ public class EditActivity extends AppCompatActivity {
         }
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Se recrea el menu que aparece en ActionBar de la actividad.
-        getMenuInflater().inflate(R.menu.menu_edit, menu);
-        return true;
-    }
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        // Gestiona la seleccion de opciones en el menú
+//        int id = item.getItemId();
+//        if (id == R.id.action_delete) {
+//            if (mRowId != null) {
+//                dbAdapter.deleteNote(mRowId);
+//            }
+//            setResult(RESULT_OK);
+//            dbAdapter.close();
+//            finish();
+//        }
+//        return super.onOptionsItemSelected(item);
+//    }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Gestiona la seleccion de opciones en el menú
-        int id = item.getItemId();
-        if (id == R.id.action_delete) {
-            if (mRowId != null) {
-                dbAdapter.deleteNote(mRowId);
-            }
-            setResult(RESULT_OK);
-            dbAdapter.close();
-            finish();
+    public void deleteNote(View view){
+        if (mRowId != null) {
+            dbAdapter.deleteNote(mRowId);
         }
-
-        if (id == R.id.action_about) {
-            System.out.println("APPMOV: About action...");
-        }
-
-        return super.onOptionsItemSelected(item);
+        setResult(RESULT_OK);
+        dbAdapter.close();
+        finish();
     }
-
 
     public void saveNote(View view) {
         String title = mTitleText.getText().toString();
@@ -96,5 +91,4 @@ public class EditActivity extends AppCompatActivity {
         dbAdapter.close();
         finish();
     }
-
 }

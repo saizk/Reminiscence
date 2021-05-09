@@ -9,35 +9,36 @@
     android:background="@drawable/ui_notepad_background"
     android:orientation="vertical" >
 
+    <RelativeLayout
+        android:layout_marginTop="35dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="150dp">
 
+        <ImageView
+            android:src="@drawable/ui_notepad"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true">
+        </ImageView>
 
-        <RelativeLayout
-            android:layout_marginTop="35dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_width="match_parent"
-            android:layout_height="150dp">
-
-            <ImageView
-                android:src="@drawable/ui_notepad"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true">
-            </ImageView>
-
-        </RelativeLayout>
+    </RelativeLayout>
 
     <ListView android:id="@+id/id_list_view"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="bottom"/>
+
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:onClick="createNote"
             android:id="@+id/fab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|end"
             android:layout_margin="@dimen/fab_margin"
-            app:srcCompat="@android:drawable/ic_dialog_email" />
+            app:srcCompat="@drawable/ui_plus"/>  <!-- what? -->
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

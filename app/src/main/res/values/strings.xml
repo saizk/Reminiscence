@@ -12,10 +12,6 @@
 
     <string name="title_activity_notepad">Notepad</string>
     <string name="title_activity_edit">Edit Note</string>
-    <string name="no_notes">No Notes Yet</string>
-    <string name="menu_insert">Add Note</string>
-    <string name="menu_about">About</string>
-    <string name="menu_delete">Delete Note</string>
     <string name="edit_title">Title</string>
     <string name="edit_body">Body</string>
     <string name="edit_confirm">Confirm</string>
