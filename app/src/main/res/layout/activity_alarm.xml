@@ -25,11 +25,12 @@
         </ImageView>
     </RelativeLayout>
 
-    <Button
+    <ImageButton
         android:id="@+id/set_alarm_button"
-        android:layout_width="137dp"
+        android:layout_width="250dp"
         android:layout_height="84dp"
-        android:text="SET ALARM"
+        android:src="@drawable/ui_setalarm"
+        android:background="#f2f2f2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -67,3 +68,4 @@
         app:layout_constraintVertical_bias="1.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
