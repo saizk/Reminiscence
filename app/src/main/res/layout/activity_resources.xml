@@ -3,7 +3,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.reminiscence.MainActivity">
+    tools:context="com.example.reminiscence.MainActivity"
+    android:background="@drawable/ui_resources_background">
+
+    <RelativeLayout
+
+        android:layout_alignParentBottom="true"
+
+        android:layout_centerHorizontal="true"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        tools:ignore="MissingConstraints">
+
+        <ImageView
+            android:src="@drawable/ui_resources"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_centerHorizontal="true">
+        </ImageView>
+    </RelativeLayout>
 
     <ListView
         android:id="@+id/list"
