@@ -7,6 +7,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
@@ -27,7 +28,7 @@ public class EditActivity extends AppCompatActivity {
         // obtiene referencia a los tres views que componen el layout
         mTitleText = (EditText) findViewById(R.id.title);
         mBodyText = (EditText) findViewById(R.id.body);
-        Button confirmButton = (Button) findViewById(R.id.confirm);
+        ImageButton confirmButton = (ImageButton) findViewById(R.id.confirm);
 
         //creamos el adaptador de la BD y la abrimos
         dbAdapter = new NotesDbAdapter(this);

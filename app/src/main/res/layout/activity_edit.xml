@@ -3,20 +3,24 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/ui_editnote_background">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:padding="10dp"
+        android:layout_marginTop="20dp">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="40sp"
+            android:layout_marginStart="5dp"
             android:layout_marginLeft="5dp"
             android:text="@string/edit_title"
-            android:layout_marginStart="5dp">
-        </TextView>
+            android:textSize="40sp"></TextView>
+
         <EditText
             android:id="@+id/title"
             android:layout_width="0dp"
@@ -33,17 +37,21 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:scrollbars="vertical"
-        android:textSize="20sp">
+        android:textSize="20sp"
+        android:hint="WRITE HERE YOUR NOTE"
+        android:textStyle="bold"
+        android:gravity="center">
     </EditText>
-    <Button
+    <ImageButton
         android:id="@+id/confirm"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="saveNote"
-        android:backgroundTint="@color/article_title"
         android:text="@string/edit_confirm"
+        android:src="@drawable/ui_setnote"
+        android:background="#f2f2f2"
         android:textSize="40sp">
-    </Button>
+    </ImageButton>
 
     <Button
         android:id="@+id/delete_note"
