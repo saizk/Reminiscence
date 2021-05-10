@@ -18,4 +18,11 @@
     <string name="delete_note">Delete Note</string>
     <string name="edit_note">Edit Note</string>
 
+    <string name="style_choose">Choose Style</string>
+    <string name="style_set_to">Style set to: %1$s</string>
+    <string name="style_label_retro">Retro</string>
+    <string name="style_label_night">Night</string>
+    <string name="style_label_default">Default</string>
+
+
 </resources>
