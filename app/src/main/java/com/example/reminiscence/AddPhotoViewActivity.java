@@ -2,23 +2,32 @@ package com.example.reminiscence;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModel;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
+
+
 
 public class AddPhotoViewActivity extends AppCompatActivity {
 
     private static final int GALLERY_REQUEST_CODE = 123;
+    ViewModelClass myViewModel;
+
 
     ImageView imageView;
     Button btnPick;
     EditText inputName;
     Button saveImageButton;
+
 
 
     @Override
@@ -34,6 +43,7 @@ public class AddPhotoViewActivity extends AppCompatActivity {
         saveImageButton = findViewById(R.id.saveImageButton);
 
 
+
         btnPick.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
@@ -42,9 +52,7 @@ public class AddPhotoViewActivity extends AppCompatActivity {
                 intent.setAction(Intent.ACTION_GET_CONTENT);
                 startActivityForResult(Intent.createChooser(intent, "Pick an image"), GALLERY_REQUEST_CODE);
             }
-
         });
-
     }
 
     @Override
@@ -53,11 +61,25 @@ public class AddPhotoViewActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == GALLERY_REQUEST_CODE && resultCode == RESULT_OK && data != null) {
 
+            String name = inputName.getText().toString();
             Uri imageData = data.getData();
             imageView.setImageURI(imageData);
 
+            Toast.makeText(getBaseContext(), name + " was added to your gallery", Toast.LENGTH_SHORT).show();
+
+            myViewModel = new ViewModelProvider(this).get(ViewModelClass.class);
+
+            //AQUI GRABAR A LA DATABASE LOS DOS VALORES to string
+            myViewModel.insert(new PhotoName(imageData.toString(), name));
+
+
         }
 
+    }
+
+    public void onGoToGalleryClick(View v){
+        Intent intent = new Intent(this, ShowGalleryActivity.class);
+        startActivity(intent);
     }
 
 }
