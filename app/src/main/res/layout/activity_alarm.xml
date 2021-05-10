@@ -8,6 +8,7 @@
     tools:context=".AlarmActivity"
     android:background="@drawable/ui_alarm_background">
 
+
     <RelativeLayout
         android:layout_marginTop="35dp"
         android:layout_marginLeft="20dp"
@@ -25,47 +26,74 @@
         </ImageView>
     </RelativeLayout>
 
-    <ImageButton
-        android:id="@+id/set_alarm_button"
-        android:layout_width="250dp"
-        android:layout_height="84dp"
-        android:src="@drawable/ui_setalarm"
-        android:background="#f2f2f2"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.697" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="8dp"
+        android:gravity="center">
 
-    <EditText
-        android:id="@+id/set_alarm_hour"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="250dp"
-        android:ems="10"
-        android:hint="Hour"
-        android:inputType="time"
-        app:layout_constraintBottom_toTopOf="@+id/set_alarm_minute"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.163" />
+        <EditText
+            android:id="@+id/set_alarm_hour"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="240dp"
+            android:gravity="center"
+            android:ems="10"
+            android:hint="HOUR"
+            android:inputType="time" />
 
-    <EditText
-        android:id="@+id/set_alarm_minute"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="84dp"
-        android:ems="10"
-        android:hint="Minute"
-        android:inputType="time"
-        android:selectAllOnFocus="false"
-        android:singleLine="false"
-        app:layout_constraintBottom_toTopOf="@+id/set_alarm_button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+
+        <EditText
+            android:id="@+id/set_alarm_minute"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="280dp"
+            android:gravity="center"
+            android:ems="10"
+            android:hint="MINUTE"
+            android:inputType="time"
+            android:selectAllOnFocus="false"
+            android:singleLine="false" />
+
+        <ImageButton
+            android:id="@+id/set_alarm_button"
+            android:layout_width="250dp"
+            android:layout_height="84dp"
+            android:src="@drawable/ui_setalarm"
+            android:background="#f2f2f2"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="340dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="YOU CAN ALSO ADD SOMETHING TO YOUR CALENDAR!"
+            android:textSize="15dp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_marginTop="473dp">
+        </TextView>
+
+        <ImageButton
+            android:src="@drawable/ui_setcalendar"
+            android:layout_width="250dp"
+            android:layout_height="84dp"
+            android:gravity="center"
+            android:layout_centerHorizontal="true"
+            android:background="#f2f2f2"
+            android:layout_marginTop="500dp"
+            android:onClick="AddCalendarEvent"
+            android:text="Add Calendar Event" />
+
+    </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+
+
+
+
 

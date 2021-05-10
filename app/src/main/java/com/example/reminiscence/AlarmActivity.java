@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import java.util.Calendar;
 
 public class AlarmActivity extends AppCompatActivity {
 
@@ -46,5 +47,17 @@ public class AlarmActivity extends AppCompatActivity {
         });
 
 
+    }
+
+    public void AddCalendarEvent(View view) {
+        Calendar calendarEvent = Calendar.getInstance();
+        Intent i = new Intent(Intent.ACTION_EDIT);
+        i.setType("vnd.android.cursor.item/event");
+        i.putExtra("beginTime", calendarEvent.getTimeInMillis());
+        i.putExtra("allDay", true);
+        i.putExtra("rule", "FREQ=YEARLY");
+        i.putExtra("endTime", calendarEvent.getTimeInMillis() + 60 * 60 * 1000);
+        i.putExtra("title", "Calendar Event");
+        startActivity(i);
     }
 }
