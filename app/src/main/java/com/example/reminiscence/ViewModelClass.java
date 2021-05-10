@@ -27,7 +27,7 @@ public class ViewModelClass extends AndroidViewModel {
 
     public LiveData<List<PhotoName>> getAllPhotos() {
 
-        return (getAllPhotos());
+        return (allPhotos);
     }
 
 

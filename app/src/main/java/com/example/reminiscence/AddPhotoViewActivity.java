@@ -65,13 +65,14 @@ public class AddPhotoViewActivity extends AppCompatActivity {
             Uri imageData = data.getData();
             imageView.setImageURI(imageData);
 
-            Toast.makeText(getBaseContext(), name + " was added to your gallery", Toast.LENGTH_SHORT).show();
+
 
             myViewModel = new ViewModelProvider(this).get(ViewModelClass.class);
 
             //AQUI GRABAR A LA DATABASE LOS DOS VALORES to string
             myViewModel.insert(new PhotoName(imageData.toString(), name));
 
+            Toast.makeText(getBaseContext(), name + " was added to your gallery", Toast.LENGTH_SHORT).show();
 
         }
 

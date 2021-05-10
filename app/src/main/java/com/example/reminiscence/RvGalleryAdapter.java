@@ -15,11 +15,13 @@ import androidx.recyclerview.widget.ListAdapter;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.squareup.picasso.Picasso;
+
 public class RvGalleryAdapter extends ListAdapter<PhotoName, RvGalleryAdapter.ViewHolder> {
 
     private AdapterView.OnItemClickListener listener;
 
-    Context context;
+    //Context context;
     String[] personNameList;
     int[] personPhotoList;
 
@@ -68,7 +70,7 @@ public class RvGalleryAdapter extends ListAdapter<PhotoName, RvGalleryAdapter.Vi
     @Override
     public RvGalleryAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        LayoutInflater inflater = LayoutInflater.from(context);
+        LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         View view = inflater.inflate(R.layout.single_image_gallery,parent,false);
         ViewHolder viewHolder = new ViewHolder(view);
         return viewHolder;
@@ -79,7 +81,9 @@ public class RvGalleryAdapter extends ListAdapter<PhotoName, RvGalleryAdapter.Vi
 
         PhotoName model = getPhotoAt(position);
         holder.rowName.setText(model.getName());
-        holder.rowPhoto.setImageURI(Uri.parse(model.getUri()));
+        //holder.rowPhoto.setImageURI(Uri.parse(model.getUri()));
+
+        Picasso.with(holder.rowPhoto.getContext()).load(model.getUri()).into(holder.rowPhoto);
 
     }
 

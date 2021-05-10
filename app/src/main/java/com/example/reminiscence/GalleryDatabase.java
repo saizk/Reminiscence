@@ -48,11 +48,11 @@ public abstract class GalleryDatabase extends RoomDatabase {
 
         @Override
         protected Void doInBackground(Void... voids) {
-            photoNameDao.insert(new PhotoName("content://com.android.providers.downloads.documents/document/msf%3A34", "brad"));
-            photoNameDao.insert(new PhotoName("content://com.android.providers.downloads.documents/document/msf%3A33", "amigo1"));
-            photoNameDao.insert(new PhotoName("content://com.android.providers.downloads.documents/document/msf%3A32", "amiga2"));
-            photoNameDao.insert(new PhotoName("content://com.android.providers.downloads.documents/document/msf%3A31", "nieto"));
-            photoNameDao.insert(new PhotoName("content://com.android.providers.downloads.documents/document/msf%3A35", "nieta"));
+            //photoNameDao.insert(new PhotoName("content://com.android.providers.downloads.documents/document/msf%3A34", "brad"));
+            //photoNameDao.insert(new PhotoName("content://com.android.providers.downloads.documents/document/msf%3A33", "amigo1"));
+            //photoNameDao.insert(new PhotoName("content://com.android.providers.downloads.documents/document/msf%3A32", "amiga2"));
+            //photoNameDao.insert(new PhotoName("content://com.android.providers.downloads.documents/document/msf%3A31", "nieto"));
+            //photoNameDao.insert(new PhotoName("content://com.android.providers.downloads.documents/document/msf%3A35", "nieta"));
 
             return null;
         }
