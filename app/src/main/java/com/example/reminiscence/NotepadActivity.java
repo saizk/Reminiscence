@@ -1,8 +1,7 @@
 package com.example.reminiscence;
 
 import android.os.Bundle;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -12,7 +11,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
-import android.widget.EditText;
 
 
 public class NotepadActivity extends AppCompatActivity {
@@ -39,7 +37,7 @@ public class NotepadActivity extends AppCompatActivity {
             new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> arg0, View view, int position, long id) {
-                    Intent i = new Intent(view.getContext(), EditActivity.class);
+                    Intent i = new Intent(view.getContext(), NotepadEditActivity.class);
                     i.putExtra(NotesDbAdapter.KEY_ROWID, id);
                     startActivityForResult(i, ACTIVITY_EDIT);
                 }
@@ -61,12 +59,12 @@ public class NotepadActivity extends AppCompatActivity {
 
         // Creamos un SimpleCursorAdapter y lo asignamos al listview para mostrarlo
         SimpleCursorAdapter notes =
-                new SimpleCursorAdapter(this, R.layout.notes_row, notesCursor, from, to, 0);
+                new SimpleCursorAdapter(this, R.layout.notepad_row, notesCursor, from, to, 0);
         m_listview.setAdapter(notes);
     }
 
     public void createNote(View view) {
-        Intent i = new Intent(this, EditActivity.class);
+        Intent i = new Intent(this, NotepadEditActivity.class);
         startActivityForResult(i, ACTIVITY_CREATE);
     }
 

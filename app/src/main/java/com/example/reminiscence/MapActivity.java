@@ -1,6 +1,7 @@
 package com.example.reminiscence;
 
 import androidx.fragment.app.FragmentActivity;
+import androidx.appcompat.widget.ActionBarOverlayLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AlertDialog;
 import androidx.annotation.NonNull;
@@ -9,23 +10,29 @@ import androidx.core.content.ContextCompat;
 
 
 import android.content.DialogInterface;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
+
 import android.widget.Toast;
 import android.Manifest;
 import android.content.pm.PackageManager;
+import android.os.Bundle;
+import android.widget.Toolbar;
+
+
 import android.location.Location;
-
-
-import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MapStyleOptions;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.GoogleMap.OnMapLongClickListener;
+import com.google.android.gms.maps.LocationSource;
+import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.GoogleMap.OnMyLocationButtonClickListener;
 import com.google.android.gms.maps.GoogleMap.OnMyLocationClickListener;
 
@@ -40,11 +47,49 @@ public class MapActivity extends AppCompatActivity
         OnMapReadyCallback,
         ActivityCompat.OnRequestPermissionsResultCallback {
 
-    private static final int LOCATION_PERMISSION_REQUEST_CODE = 11;
+    private static class LongPressLocationSource implements
+            LocationSource, OnMapLongClickListener {
 
-    private boolean permissionDenied = false;
+        private OnLocationChangedListener mListener;
+
+        private boolean mPaused;
+
+        @Override
+        public void activate(OnLocationChangedListener listener) {
+            mListener = listener;
+        }
+
+        @Override
+        public void deactivate() {
+            mListener = null;
+        }
+
+        @Override
+        public void onMapLongClick(LatLng point) {
+            if (mListener != null && !mPaused) {
+                Location location = new Location("LongPressLocationProvider");
+                location.setLatitude(point.latitude);
+                location.setLongitude(point.longitude);
+                location.setAccuracy(100);
+                mListener.onLocationChanged(location);
+            }
+        }
+
+        public void onPause() {
+            mPaused = true;
+        }
+
+        public void onResume() {
+            mPaused = false;
+        }
+
+    }
 
     private GoogleMap mMap;
+
+    private boolean permissionDenied = false;
+    private LongPressLocationSource mLocationSource;
+    private static final int LOCATION_PERMISSION_REQUEST_CODE = 11;
 
     private static final String TAG = MapActivity.class.getSimpleName();
 
@@ -62,7 +107,7 @@ public class MapActivity extends AppCompatActivity
             R.string.style_label_default,
     };
 
-    private static final LatLng SYDNEY = new LatLng(-33.8688, 151.2093);
+    private static final LatLng LEGANES = new LatLng(40.3377, -3.7722);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,9 +117,23 @@ public class MapActivity extends AppCompatActivity
         }
         setContentView(R.layout.activity_map);
 
+        mLocationSource = new LongPressLocationSource();
+
         SupportMapFragment mapFragment =
                 (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mLocationSource.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        mLocationSource.onPause();
     }
 
     @Override
@@ -87,15 +146,20 @@ public class MapActivity extends AppCompatActivity
     @Override
     public void onMapReady(GoogleMap map) {
         mMap = map;
-        //mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(SYDNEY, 16));
+        mMap.setLocationSource(mLocationSource);
+        mMap.addMarker(new MarkerOptions().position(LEGANES).title("#TeamPIÉ headquarters here!"));
+//        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(LEGANES, 16));
         mMap.setOnMyLocationButtonClickListener(this);
         mMap.setOnMyLocationClickListener(this);
+        mMap.setOnMapLongClickListener(mLocationSource);
+        mMap.setMyLocationEnabled(true);
         setSelectedStyle();
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.styled_map_menu, menu);
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.styled_map_menu, menu);
         return true;
     }
 

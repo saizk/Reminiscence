@@ -6,12 +6,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-public class ChooseGalleryViewActivity extends AppCompatActivity {
+public class GallerySelectViewActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_choose_gallery_view);
+        setContentView(R.layout.activity_gallery_select_view);
     }
 
     public void onSeeGalleryClick(View view){

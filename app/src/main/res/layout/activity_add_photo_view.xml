@@ -1,11 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".AddPhotoViewActivity"
     android:background="@drawable/ui_addgallery_background">
+
+    <EditText
+        android:id="@+id/InputName"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="75dp"
+        android:textStyle="bold"
+        android:textSize="25dp"
+        android:textAlignment="center"
+        android:hint="NAME OF THE PERSON IN THIS PHOTO">
+    </EditText>
 
     <ImageView
         android:src="@drawable/ui_placeholderpic"
@@ -18,7 +29,8 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="236dp"
         android:background="@android:color/black"
-        android:scaleType="centerCrop"></ImageView>
+        android:scaleType="centerCrop">
+    </ImageView>
 
     <ImageButton
         android:background="#f2f2f2"
@@ -28,20 +40,8 @@
         android:layout_height="100dp"
         android:layout_below="@id/PickImageView"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="2dp"
-        android:text="Pick an image"></ImageButton>
-
-
-    <EditText
-        android:id="@+id/InputName"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="75dp"
-        android:textStyle="bold"
-        android:textSize="25dp"
-
-        android:hint="NAME OF THE PERSON IN THIS PHOTO" />
+        android:layout_marginTop="2dp">
+    </ImageButton>
 
     <ImageButton
         android:src="@drawable/ui_backtogallery"
@@ -52,8 +52,7 @@
         android:layout_below="@id/PickImageButton"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
-        android:onClick="onGoToGalleryClick"
-        android:text="Go to the Gallery"></ImageButton>
-
+        android:onClick="onGoToGalleryClick">
+    </ImageButton>
 
 </RelativeLayout>
