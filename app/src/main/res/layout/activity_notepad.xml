@@ -31,8 +31,8 @@
 
     <ListView android:id="@+id/id_list_view"
         android:layout_width="match_parent"
-        android:layout_height="500dp"
-        android:layout_gravity="bottom"
+        android:layout_height="400dp"
+        android:layout_marginTop="250dp"
         android:padding="20dp">
     </ListView>
 
@@ -44,7 +44,7 @@
         android:layout_height="wrap_content"
         android:src="@drawable/ui_addnote"
         android:background="@color/transparent"
-        android:layout_gravity="bottom|left"
+        android:layout_gravity="bottom|right"
         android:onClick="createNote"
         android:id="@+id/fab">
 
