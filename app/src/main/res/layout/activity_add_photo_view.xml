@@ -10,40 +10,42 @@
         android:id="@+id/PickImageView"
         android:layout_width="200dp"
         android:layout_height="200dp"
+        android:layout_below="@id/InputName"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="145dp"
+        android:layout_marginTop="236dp"
         android:background="@android:color/black"
         android:scaleType="centerCrop"></ImageView>
 
     <Button
         android:id="@+id/PickImageButton"
-        android:layout_width="200dp"
-        android:layout_height="40dp"
+        android:layout_width="287dp"
+        android:layout_height="69dp"
         android:layout_below="@id/PickImageView"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="2dp"
         android:text="Pick an image"></Button>
+
 
     <EditText
         android:id="@+id/InputName"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/PickImageButton"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="55dp"
-        android:hint="Please input name" />
+        android:layout_marginTop="140dp"
+        android:layout_marginBottom="102dp"
 
-
+        android:hint="Please input name or title" />
 
     <Button
         android:id="@+id/saveImageButton"
-        android:layout_width="299dp"
-        android:layout_height="91dp"
-        android:layout_below="@id/InputName"
+        android:layout_width="268dp"
+        android:layout_height="71dp"
+        android:layout_below="@id/PickImageButton"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="76dp"
-        android:text="Save photo"></Button>
+        android:layout_marginTop="96dp"
+        android:onClick="onGoToGalleryClick"
+        android:text="Go to the Gallery"></Button>
 
 
 </RelativeLayout>

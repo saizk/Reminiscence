@@ -29,6 +29,7 @@ public class AlarmActivity extends AppCompatActivity {
         mMinuteEditText = (EditText) findViewById(R.id.set_alarm_minute);
 
         mSetAlarmButton = (ImageButton) findViewById(R.id.set_alarm_button);
+
         mSetAlarmButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
