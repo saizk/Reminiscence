@@ -4,11 +4,21 @@
     <string name="next">Next</string>
     <string name="previous">Previous</string>
 
+
+    <string name="ALARM">ALARM</string>
+    <string name="NOTES">NOTES</string>
+    <string name="MAP">MAP</string>
+    <string name="INFO">INFO</string>
+    <string name="GALLERY">GALLERY</string>
+    <string name="HELP">HELP!</string>
+
     <string name="edit_title">Title: </string>
     <string name="edit_body">Body: </string>
     <string name="edit_confirm">Save Note</string>
     <string name="delete_note">Delete Note</string>
     <string name="edit_note">Edit Note</string>
+    <string name="edit_phone">Phone: </string>
+    <string name="delete_phone">Delete Phone</string>
 
     <string name="style_choose">Choose Style</string>
     <string name="style_set_to">Style set to: %1$s</string>

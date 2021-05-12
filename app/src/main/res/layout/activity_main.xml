@@ -69,7 +69,7 @@
                     <TextView
                         android:layout_marginTop="12dp"
                         android:textSize="20sp"
-                        android:text="ALARM"
+                        android:text="@string/ALARM"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
                     </TextView>
@@ -99,7 +99,7 @@
                     <TextView
                         android:layout_marginTop="12dp"
                         android:textSize="20sp"
-                        android:text="NOTES"
+                        android:text="@string/NOTES"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
                     </TextView>
@@ -128,7 +128,7 @@
                     <TextView
                         android:layout_marginTop="12dp"
                         android:textSize="20sp"
-                        android:text="MAP"
+                        android:text="@string/MAP"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
                     </TextView>
@@ -157,7 +157,7 @@
                     <TextView
                         android:layout_marginTop="12dp"
                         android:textSize="20sp"
-                        android:text="INFO"
+                        android:text="@string/INFO"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
                     </TextView>
@@ -186,13 +186,14 @@
                     <TextView
                         android:layout_marginTop="12dp"
                         android:textSize="20sp"
-                        android:text="GALLERY"
+                        android:text="@string/GALLERY"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
                     </TextView>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
             <androidx.cardview.widget.CardView
+                android:onClick="onHelpClick"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_columnWeight="1"
@@ -214,7 +215,7 @@
                     <TextView
                         android:layout_marginTop="12dp"
                         android:textSize="20sp"
-                        android:text="HELP!"
+                        android:text="@string/HELP"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
                     </TextView>

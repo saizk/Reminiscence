@@ -17,22 +17,24 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, AlarmActivity.class);
         startActivity(intent);
     }
-    public void onResourcesClick(View view){
-        Intent intent = new Intent(this, ResourcesActivity.class);
+    public void onNotepadClick(View view){
+        Intent intent = new Intent(this, NotepadActivity.class);
         startActivity(intent);
     }
     public void onMapClick(View view){
         Intent intent = new Intent(this, MapActivity.class);
         startActivity(intent);
     }
-    public void onNotepadClick(View view){
-        Intent intent = new Intent(this, NotepadActivity.class);
+    public void onResourcesClick(View view){
+        Intent intent = new Intent(this, ResourcesActivity.class);
         startActivity(intent);
     }
-
     public void onGalleryClick(View view){
         Intent intent = new Intent(this, GallerySelectViewActivity.class);
         startActivity(intent);
     }
-
+    public void onHelpClick(View view){
+        Intent intent = new Intent(this, HelpActivity.class);
+        startActivity(intent);
+    }
 }

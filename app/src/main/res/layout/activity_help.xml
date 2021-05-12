@@ -5,12 +5,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".NotepadActivity"
-    android:background="@drawable/ui_notepad_background"
-    android:orientation="vertical" >
+    android:background="@drawable/ui_galleryview_background"
+    android:orientation="vertical"
+    tools:context=".HelpActivity">
 
     <RelativeLayout
-        android:id="@+id/notepadrellay"
+        android:id="@+id/helprellay"
         android:layout_marginTop="35dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
@@ -27,12 +27,11 @@
 
     </RelativeLayout>
 
-
-
-    <ListView android:id="@+id/id_list_view"
+    <ListView
+        android:id="@+id/phone_list"
         android:layout_width="match_parent"
         android:layout_height="400dp"
-        android:layout_marginTop="250dp"
+        android:layout_marginTop="200dp"
         android:padding="20dp">
     </ListView>
 
@@ -41,11 +40,9 @@
         android:layout_height="wrap_content"
         android:src="@drawable/ui_addnote"
         android:background="@color/transparent"
-        android:layout_gravity="bottom|right"
-        android:layout_marginBottom="8dp"
-        android:layout_marginRight="5dp"
-        android:onClick="createNote"
-        android:id="@+id/fab">
+        android:layout_gravity="bottom|center"
+        android:layout_marginBottom="25dp"
+        android:onClick="createPhone">
 
     </ImageButton>
 
