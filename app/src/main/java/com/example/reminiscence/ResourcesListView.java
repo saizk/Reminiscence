@@ -17,7 +17,7 @@ class ResourcesListAdapter extends ArrayAdapter<String> {
     private final Integer[] imgid;
 
     public ResourcesListAdapter(Activity context, String[] maintitle, String[] subtitle, Integer[] imgid) {
-        super(context, R.layout.mylist, maintitle);
+        super(context, R.layout.resources_list, maintitle);
         // TODO Auto-generated constructor stub
 
         this.context=context;
@@ -29,7 +29,7 @@ class ResourcesListAdapter extends ArrayAdapter<String> {
 
     public View getView(int position,View view,ViewGroup parent) {
         LayoutInflater inflater=context.getLayoutInflater();
-        View rowView=inflater.inflate(R.layout.mylist, null,true);
+        View rowView=inflater.inflate(R.layout.resources_list, null,true);
 
         TextView titleText = (TextView) rowView.findViewById(R.id.title);
         ImageView imageView = (ImageView) rowView.findViewById(R.id.icon);
