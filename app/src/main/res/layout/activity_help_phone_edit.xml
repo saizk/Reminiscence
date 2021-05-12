@@ -18,7 +18,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
             android:layout_marginLeft="5dp"
-            android:text="@string/edit_phone"
+            android:text="@string/edit_name"
             android:textSize="40sp">
         </TextView>
 
@@ -39,7 +39,7 @@
         android:layout_weight="1"
         android:scrollbars="vertical"
         android:textSize="50sp"
-        android:hint="WRITE THE PHONE HERE"
+        android:hint="@string/edit_phone"
         android:textStyle="bold"
         android:gravity="center">
     </EditText>

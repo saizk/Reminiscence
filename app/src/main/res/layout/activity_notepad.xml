@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".NotepadActivity"
     android:background="@drawable/ui_notepad_background"
-    android:orientation="vertical" >
+    android:orientation="vertical">
 
     <RelativeLayout
         android:id="@+id/notepadrellay"
@@ -26,7 +26,6 @@
         </ImageView>
 
     </RelativeLayout>
-
 
 
     <ListView android:id="@+id/id_list_view"

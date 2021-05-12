@@ -17,8 +17,12 @@
     <string name="edit_confirm">Save Note</string>
     <string name="delete_note">Delete Note</string>
     <string name="edit_note">Edit Note</string>
-    <string name="edit_phone">Phone: </string>
+
+    <string name="edit_name">Name: </string>
     <string name="delete_phone">Delete Phone</string>
+    <string name="edit_phone">WRITE THE PHONE HERE</string>
+
+
 
     <string name="style_choose">Choose Style</string>
     <string name="style_set_to">Style set to: %1$s</string>

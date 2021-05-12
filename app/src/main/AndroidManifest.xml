@@ -38,6 +38,8 @@
         <activity android:name=".GallerySelectViewActivity" />
         <activity android:name=".ShowGalleryActivity" />
         <activity android:name=".AlarmActivity" />
+        <activity android:name=".HelpActivity" />
+        <activity android:name=".HelpPhoneEditActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
