@@ -1,5 +1,28 @@
 package com.example.reminiscence;
 
+
+/*
+ * Asignatura Aplicaciones Moviles - UC3M
+ * Update: 13/02/2018.
+ *
+ * Based in code by Google with Apache License, Version 2.0
+ *
+ * Copyright (C) 2008 Google Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -8,21 +31,17 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-// Clase adaptadora que nos va a facilitar el uso de la BD
-public class ContactsPhonesDbAdapter {
+public class ContactsDbAdapter {
     private static final String TAG = "APMOV: HelpPhonesDbAdapter"; // Usado en los mensajes de Log
 
-    //Nombre de la base de datos, tablas (en este caso una) y versión
     private static final String DATABASE_NAME = "help_phones";
     private static final String DATABASE_TABLE = "phones";
     private static final int DATABASE_VERSION = 2;
 
-    //campos de la tabla de la base de datos
     public static final String KEY_NAME = "name";
     public static final String KEY_PHONE = "phone";
     public static final String KEY_ROWID = "_id";
 
-    // Sentencia SQL para crear las tablas de las bases de datos
     private static final String DATABASE_CREATE = "create table " + DATABASE_TABLE + " (" +
             KEY_ROWID +" integer primary key autoincrement, " +
             KEY_NAME +" text not null, " +
@@ -60,7 +79,7 @@ public class ContactsPhonesDbAdapter {
      * @param ctx the Context within which to work
      */
 
-    public ContactsPhonesDbAdapter(Context ctx) {
+    public ContactsDbAdapter(Context ctx) {
         this.mCtx = ctx;
     }
 
@@ -73,7 +92,7 @@ public class ContactsPhonesDbAdapter {
      *         initialization call)
      * @throws SQLException if the database could be neither opened or created
      */
-    public ContactsPhonesDbAdapter open() throws SQLException {
+    public ContactsDbAdapter open() throws SQLException {
         mDbHelper = new DatabaseHelper(mCtx);
         mDb = mDbHelper.getWritableDatabase();
         return this;

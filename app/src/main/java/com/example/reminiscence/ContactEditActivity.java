@@ -17,7 +17,7 @@ public class ContactEditActivity extends AppCompatActivity {
     private EditText mNameText;
     private EditText mPhoneText;
     private Long mRowId;
-    private ContactsPhonesDbAdapter dbAdapter;
+    private ContactsDbAdapter dbAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,15 +30,15 @@ public class ContactEditActivity extends AppCompatActivity {
         ImageButton confirmButton = (ImageButton) findViewById(R.id.confirm_phone);
 
         //creamos el adaptador de la BD y la abrimos
-        dbAdapter = new ContactsPhonesDbAdapter(this);
+        dbAdapter = new ContactsDbAdapter(this);
         dbAdapter.open();
 
         // obtiene id de fila de la tabla si se le ha pasado (hemos pulsado una nota para editarla)
         mRowId = (savedInstanceState == null) ? null :
-                (Long) savedInstanceState.getSerializable(ContactsPhonesDbAdapter.KEY_ROWID);
+                (Long) savedInstanceState.getSerializable(ContactsDbAdapter.KEY_ROWID);
         if (mRowId == null) {
             Bundle extras = getIntent().getExtras();
-            mRowId = extras != null ? extras.getLong(ContactsPhonesDbAdapter.KEY_ROWID) : null;
+            mRowId = extras != null ? extras.getLong(ContactsDbAdapter.KEY_ROWID) : null;
         }
 
         // Si se le ha pasado un id (no era null) rellena el título y el cuerpo con los campos guardados en la BD
@@ -46,9 +46,9 @@ public class ContactEditActivity extends AppCompatActivity {
         if (mRowId != null) {
             Cursor phone = dbAdapter.fetchPhone(mRowId);
             mNameText.setText(phone.getString(
-                    phone.getColumnIndexOrThrow(ContactsPhonesDbAdapter.KEY_NAME)));
+                    phone.getColumnIndexOrThrow(ContactsDbAdapter.KEY_NAME)));
             mPhoneText.setText(phone.getString(
-                    phone.getColumnIndexOrThrow(ContactsPhonesDbAdapter.KEY_PHONE)));
+                    phone.getColumnIndexOrThrow(ContactsDbAdapter.KEY_PHONE)));
         }
     }
 

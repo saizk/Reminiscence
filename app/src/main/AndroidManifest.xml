@@ -33,7 +33,8 @@
             android:parentActivityName=".NotepadActivity">
         </activity>
 
-        <activity android:name=".MapActivity"
+        <activity android:name=".MapActivity" />
+        <activity android:name=".MapCoordinatesActivity"
             android:theme="@style/Theme.AppCompat.Light.DarkActionBar">
         </activity>
 

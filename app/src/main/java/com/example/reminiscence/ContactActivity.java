@@ -14,7 +14,7 @@ import android.widget.SimpleCursorAdapter;
 
 
 public class ContactActivity extends AppCompatActivity {
-    private ContactsPhonesDbAdapter dbAdapter;
+    private ContactsDbAdapter dbAdapter;
     private ListView m_listview;
 
     // para indicar en un Intent si se quiere crear una nueva nota o editar una existente
@@ -25,7 +25,7 @@ public class ContactActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contacts);
-        dbAdapter = new ContactsPhonesDbAdapter(this);
+        dbAdapter = new ContactsDbAdapter(this);
         dbAdapter.open();
 
         // Creamos un listview que va a contener el título de todas las notas y
@@ -37,7 +37,7 @@ public class ContactActivity extends AppCompatActivity {
                     @Override
                     public void onItemClick(AdapterView<?> arg0, View view, int position, long id) {
                         Intent i = new Intent(view.getContext(), ContactEditActivity.class);
-                        i.putExtra(ContactsPhonesDbAdapter.KEY_ROWID, id);
+                        i.putExtra(ContactsDbAdapter.KEY_ROWID, id);
                         startActivityForResult(i, ACTIVITY_EDIT);
                     }
                 }
@@ -50,7 +50,7 @@ public class ContactActivity extends AppCompatActivity {
         Cursor phonesCursor = dbAdapter.fetchAllPhones();
 
         // Creamos un array con los campos que queremos mostrar en el listview (sólo el título de la nota)
-        String[] from = new String[]{ContactsPhonesDbAdapter.KEY_NAME};
+        String[] from = new String[]{ContactsDbAdapter.KEY_NAME};
 
         // array con los campos que queremos ligar a los campos del array de la línea anterior (en este caso sólo text1)
         int[] to = new int[]{R.id.text1};
