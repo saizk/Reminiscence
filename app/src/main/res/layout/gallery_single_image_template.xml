@@ -7,20 +7,23 @@
     android:layout_height="wrap_content"
     >
 
-    <ImageView
-        android:id="@+id/imageShow"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:paddingTop="20pt"
-        tools:srcCompat="@tools:sample/avatars" />
-
     <TextView
         android:id="@+id/nameShow"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="NAME"
-        android:textSize="20pt"/>
+        android:textSize="20pt" />
+
+    <ImageView
+        android:id="@+id/imageShow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_below="@id/nameShow"
+        android:paddingTop="20pt"
+        tools:srcCompat="@tools:sample/avatars" />
+
+
 
 </LinearLayout>

@@ -68,9 +68,16 @@ public class GalleryAddPhotoActivity extends AppCompatActivity {
             myViewModel = new ViewModelProvider(this).get(GalleryViewModelClass.class);
 
             //AQUI GRABAR A LA DATABASE LOS DOS VALORES to string
-            myViewModel.insert(new PhotoName(imageData.toString(), name));
+            if (name.length() != 0) {
+                myViewModel.insert(new PhotoName(imageData.toString(), name));
+                Toast.makeText(getBaseContext(), name + " was added to your gallery", Toast.LENGTH_LONG).show();
+            }
+            else{
+                Toast.makeText(getBaseContext(),"Please fill the name", Toast.LENGTH_LONG).show();
+//                return;
+            }
 
-            Toast.makeText(getBaseContext(), name + " was added to your gallery", Toast.LENGTH_SHORT).show();
+
 
         }
 
