@@ -34,9 +34,9 @@
             android:parentActivityName=".NotepadActivity">
         </activity>
         <activity android:name=".ResourcesActivity" />
-        <activity android:name=".AddPhotoViewActivity" />
-        <activity android:name=".GallerySelectViewActivity" />
-        <activity android:name=".ShowGalleryActivity" />
+        <activity android:name=".GalleryAddPhotoActivity" />
+        <activity android:name=".GalleryActivity" />
+        <activity android:name=".GalleryShowActivity" />
         <activity android:name=".AlarmActivity" />
         <activity android:name=".HelpActivity" />
         <activity android:name=".HelpPhoneEditActivity" />

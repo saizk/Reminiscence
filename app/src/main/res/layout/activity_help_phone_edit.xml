@@ -38,7 +38,9 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:scrollbars="vertical"
-        android:textSize="50sp"
+        android:inputType="phone"
+        android:maxLength="12"
+        android:textSize="32sp"
         android:hint="@string/edit_phone"
         android:textStyle="bold"
         android:gravity="center">

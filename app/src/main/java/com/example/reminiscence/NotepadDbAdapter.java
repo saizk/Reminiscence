@@ -9,7 +9,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 // Clase adaptadora que nos va a facilitar el uso de la BD
-public class NotesDbAdapter {
+public class NotepadDbAdapter {
     private static final String TAG = "APMOV: NotesDbAdapter"; // Usado en los mensajes de Log
 
     //Nombre de la base de datos, tablas (en este caso una) y versión
@@ -60,7 +60,7 @@ public class NotesDbAdapter {
      * @param ctx the Context within which to work
      */
 
-    public NotesDbAdapter(Context ctx) {
+    public NotepadDbAdapter(Context ctx) {
         this.mCtx = ctx;
     }
 
@@ -73,7 +73,7 @@ public class NotesDbAdapter {
      *         initialization call)
      * @throws SQLException if the database could be neither opened or created
      */
-    public NotesDbAdapter open() throws SQLException {
+    public NotepadDbAdapter open() throws SQLException {
         mDbHelper = new DatabaseHelper(mCtx);
         mDb = mDbHelper.getWritableDatabase();
         return this;

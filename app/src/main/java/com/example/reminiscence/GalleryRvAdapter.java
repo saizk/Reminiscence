@@ -1,7 +1,5 @@
 package com.example.reminiscence;
 
-import android.content.Context;
-import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,7 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
 
-public class RvGalleryAdapter extends ListAdapter<PhotoName, RvGalleryAdapter.ViewHolder> {
+public class GalleryRvAdapter extends ListAdapter<PhotoName, GalleryRvAdapter.ViewHolder> {
 
     private AdapterView.OnItemClickListener listener;
 
@@ -39,7 +37,7 @@ public class RvGalleryAdapter extends ListAdapter<PhotoName, RvGalleryAdapter.Vi
         }
     }
 
-    RvGalleryAdapter() {
+    GalleryRvAdapter() {
         super(DIFF_CALLBACK);
     }
 
@@ -68,16 +66,16 @@ public class RvGalleryAdapter extends ListAdapter<PhotoName, RvGalleryAdapter.Vi
 
     @NonNull
     @Override
-    public RvGalleryAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public GalleryRvAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        View view = inflater.inflate(R.layout.single_image_gallery,parent,false);
+        View view = inflater.inflate(R.layout.gallery_single_image_template,parent,false);
         ViewHolder viewHolder = new ViewHolder(view);
         return viewHolder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RvGalleryAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull GalleryRvAdapter.ViewHolder holder, int position) {
 
         PhotoName model = getPhotoAt(position);
         holder.rowName.setText(model.getName());

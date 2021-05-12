@@ -2,15 +2,12 @@ package com.example.reminiscence;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -18,10 +15,10 @@ import android.widget.Toast;
 
 
 
-public class AddPhotoViewActivity extends AppCompatActivity {
+public class GalleryAddPhotoActivity extends AppCompatActivity {
 
     private static final int GALLERY_REQUEST_CODE = 123;
-    ViewModelClass myViewModel;
+    GalleryViewModelClass myViewModel;
 
 
     ImageView imageView;
@@ -34,7 +31,7 @@ public class AddPhotoViewActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_photo_view);
+        setContentView(R.layout.activity_gallery_add_photo);
 
         //initializing views
 
@@ -68,7 +65,7 @@ public class AddPhotoViewActivity extends AppCompatActivity {
 
 
 
-            myViewModel = new ViewModelProvider(this).get(ViewModelClass.class);
+            myViewModel = new ViewModelProvider(this).get(GalleryViewModelClass.class);
 
             //AQUI GRABAR A LA DATABASE LOS DOS VALORES to string
             myViewModel.insert(new PhotoName(imageData.toString(), name));
@@ -80,7 +77,7 @@ public class AddPhotoViewActivity extends AppCompatActivity {
     }
 
     public void onGoToGalleryClick(View v){
-        Intent intent = new Intent(this, ShowGalleryActivity.class);
+        Intent intent = new Intent(this, GalleryShowActivity.class);
         startActivity(intent);
     }
 

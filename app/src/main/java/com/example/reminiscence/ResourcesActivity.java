@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
 
 public class ResourcesActivity extends AppCompatActivity {
 
@@ -38,7 +37,7 @@ public class ResourcesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_resources);
 
-        MyListAdapter adapter=new MyListAdapter(this, maintitle, subtitle,imgid);
+        ResourcesListAdapter adapter=new ResourcesListAdapter(this, maintitle, subtitle,imgid);
         list=(ListView)findViewById(R.id.list);
         list.setAdapter(adapter);
 

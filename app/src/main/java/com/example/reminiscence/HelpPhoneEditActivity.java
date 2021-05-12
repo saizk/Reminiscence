@@ -71,6 +71,10 @@ public class HelpPhoneEditActivity extends AppCompatActivity {
             alertDialog("Please fill the name and the phone");
             return;
         }
+        if (phone.length() < 9) {
+            alertDialog("Please enter a correct phone number");
+            return;
+        }
 
         if (mRowId == null) {
             long id = dbAdapter.createPhone(name, phone);

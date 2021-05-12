@@ -14,7 +14,7 @@ import android.widget.SimpleCursorAdapter;
 
 
 public class NotepadActivity extends AppCompatActivity {
-    private NotesDbAdapter dbAdapter;
+    private NotepadDbAdapter dbAdapter;
     private ListView m_listview;
 
     // para indicar en un Intent si se quiere crear una nueva nota o editar una existente
@@ -26,7 +26,7 @@ public class NotepadActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notepad);
 
-        dbAdapter = new NotesDbAdapter(this);
+        dbAdapter = new NotepadDbAdapter(this);
         dbAdapter.open();
 
         // Creamos un listview que va a contener el título de todas las notas y
@@ -38,7 +38,7 @@ public class NotepadActivity extends AppCompatActivity {
                 @Override
                 public void onItemClick(AdapterView<?> arg0, View view, int position, long id) {
                     Intent i = new Intent(view.getContext(), NotepadEditActivity.class);
-                    i.putExtra(NotesDbAdapter.KEY_ROWID, id);
+                    i.putExtra(NotepadDbAdapter.KEY_ROWID, id);
                     startActivityForResult(i, ACTIVITY_EDIT);
                 }
             }
@@ -52,7 +52,7 @@ public class NotepadActivity extends AppCompatActivity {
         Cursor notesCursor = dbAdapter.fetchAllNotes();
 
         // Creamos un array con los campos que queremos mostrar en el listview (sólo el título de la nota)
-        String[] from = new String[]{NotesDbAdapter.KEY_TITLE};
+        String[] from = new String[]{NotepadDbAdapter.KEY_TITLE};
 
         // array con los campos que queremos ligar a los campos del array de la línea anterior (en este caso sólo text1)
         int[] to = new int[]{R.id.text1};

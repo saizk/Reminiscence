@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AddPhotoViewActivity"
+    tools:context=".GalleryAddPhotoActivity"
     android:background="@drawable/ui_addgallery_background">
 
     <EditText

@@ -8,13 +8,13 @@ import androidx.lifecycle.LiveData;
 
 import java.util.List;
 
-public class ViewModelClass extends AndroidViewModel {
+public class GalleryViewModelClass extends AndroidViewModel {
 
     private GalleryRepository repository;
     private LiveData<List<PhotoName>> allPhotos;
 
 
-    public ViewModelClass(@NonNull Application application) {
+    public GalleryViewModelClass(@NonNull Application application) {
         super(application);
         repository = new GalleryRepository(application);
         allPhotos = repository.getAllPhotos();

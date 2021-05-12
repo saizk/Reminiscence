@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
     public void onGalleryClick(View view){
-        Intent intent = new Intent(this, GallerySelectViewActivity.class);
+        Intent intent = new Intent(this, GalleryActivity.class);
         startActivity(intent);
     }
     public void onHelpClick(View view){

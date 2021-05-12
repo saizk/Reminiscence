@@ -2,22 +2,20 @@ package com.example.reminiscence;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.recyclerview.widget.ListAdapter;
 
 import android.os.Bundle;
 
 import java.util.List;
 
-public class ShowGalleryActivity extends AppCompatActivity {
+public class GalleryShowActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
     RecyclerView.Adapter RvGalleryAdapter;
     RecyclerView.LayoutManager layoutmanager;
-    ViewModelClass myViewModel;
+    GalleryViewModelClass myViewModel;
 
 
     //String[] personNameList = {"nieta", "nieto", "amiga1", "amigo2", "brad"};
@@ -35,10 +33,10 @@ public class ShowGalleryActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutmanager);
 
 
-        final RvGalleryAdapter adapter = new RvGalleryAdapter();
+        final GalleryRvAdapter adapter = new GalleryRvAdapter();
         recyclerView.setAdapter(adapter);
 
-        myViewModel = new ViewModelProvider(this).get(ViewModelClass.class);
+        myViewModel = new ViewModelProvider(this).get(GalleryViewModelClass.class);
 
         myViewModel.getAllPhotos().observe(this, new Observer<List<PhotoName>>() {
             @Override
