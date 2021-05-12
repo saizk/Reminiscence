@@ -43,8 +43,8 @@
         <activity android:name=".GalleryAddPhotoActivity" />
         <activity android:name=".GalleryShowActivity" />
 
-        <activity android:name=".HelpActivity" />
-        <activity android:name=".HelpPhoneEditActivity" />
+        <activity android:name=".ContactActivity" />
+        <activity android:name=".ContactEditActivity" />
 
         <activity android:name=".MainActivity">
             <intent-filter>
@@ -52,6 +52,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+
+
     </application>
+
+
 
 </manifest>

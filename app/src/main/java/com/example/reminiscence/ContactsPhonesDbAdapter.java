@@ -9,7 +9,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 // Clase adaptadora que nos va a facilitar el uso de la BD
-public class HelpPhonesDbAdapter {
+public class ContactsPhonesDbAdapter {
     private static final String TAG = "APMOV: HelpPhonesDbAdapter"; // Usado en los mensajes de Log
 
     //Nombre de la base de datos, tablas (en este caso una) y versión
@@ -60,7 +60,7 @@ public class HelpPhonesDbAdapter {
      * @param ctx the Context within which to work
      */
 
-    public HelpPhonesDbAdapter(Context ctx) {
+    public ContactsPhonesDbAdapter(Context ctx) {
         this.mCtx = ctx;
     }
 
@@ -73,7 +73,7 @@ public class HelpPhonesDbAdapter {
      *         initialization call)
      * @throws SQLException if the database could be neither opened or created
      */
-    public HelpPhonesDbAdapter open() throws SQLException {
+    public ContactsPhonesDbAdapter open() throws SQLException {
         mDbHelper = new DatabaseHelper(mCtx);
         mDb = mDbHelper.getWritableDatabase();
         return this;

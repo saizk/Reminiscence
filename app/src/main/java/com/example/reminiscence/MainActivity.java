@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
     public void onHelpClick(View view){
-        Intent intent = new Intent(this, HelpActivity.class);
+        Intent intent = new Intent(this, ContactActivity.class);
         startActivity(intent);
     }
 }

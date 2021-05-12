@@ -72,6 +72,9 @@ public class MapActivity extends AppCompatActivity
                 location.setLongitude(point.longitude);
                 location.setAccuracy(100);
                 mListener.onLocationChanged(location);
+
+                // meter variables en db
+
             }
         }
 
