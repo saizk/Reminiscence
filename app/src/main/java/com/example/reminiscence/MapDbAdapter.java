@@ -11,7 +11,7 @@ import android.util.Log;
 public class MapDbAdapter {
     private static final String TAG = "APMOV: MapDbAdapter"; // Usado en los mensajes de Log
 
-    private static final String DATABASE_NAME = "data";
+    private static final String DATABASE_NAME = "map";
     private static final String DATABASE_TABLE = "coordinates";
     private static final int DATABASE_VERSION = 2;
 

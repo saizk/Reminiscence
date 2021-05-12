@@ -8,11 +8,15 @@ import androidx.core.content.ContextCompat;
 
 
 import android.content.DialogInterface;
+import android.database.Cursor;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
+import android.view.View;
+import android.widget.EditText;
+import android.widget.SimpleCursorAdapter;
 import android.widget.Toast;
 import android.Manifest;
 import android.content.pm.PackageManager;
@@ -33,6 +37,7 @@ import com.google.android.gms.maps.GoogleMap.OnMyLocationClickListener;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 
 public class MapCoordinatesActivity extends AppCompatActivity
@@ -42,12 +47,12 @@ public class MapCoordinatesActivity extends AppCompatActivity
         OnMapReadyCallback,
         ActivityCompat.OnRequestPermissionsResultCallback {
 
-    private static class LongPressLocationSource implements
+    private class LongPressLocationSource implements
             LocationSource, OnMapLongClickListener {
 
         private OnLocationChangedListener mListener;
-
         private boolean mPaused;
+
 
         @Override
         public void activate(OnLocationChangedListener listener) {
@@ -67,9 +72,6 @@ public class MapCoordinatesActivity extends AppCompatActivity
                 location.setLongitude(point.longitude);
                 location.setAccuracy(100);
                 mListener.onLocationChanged(location);
-
-                // meter variables en db
-
             }
         }
 
@@ -85,17 +87,23 @@ public class MapCoordinatesActivity extends AppCompatActivity
 
     private GoogleMap mMap;
 
+    private MapDbAdapter dbAdapter;
+    private EditText latitude;
+    private EditText longitude;
+    private Long mRowId;
+
     private boolean permissionDenied = false;
     private LongPressLocationSource mLocationSource;
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 11;
 
     private static final String TAG = MapCoordinatesActivity.class.getSimpleName();
+    private static final LatLng LEGANES = new LatLng(40.3377, -3.7722);
 
     private static final String SELECTED_STYLE = "selected_style";
 
     // Stores the ID of the currently selected style, so that we can re-apply it when
     // the activity restores state, for example when the device changes orientation.
-    private int mSelectedStyleId = R.string.style_label_default;
+    private int mSelectedStyleId = R.string.style_label_retro;
 
     // These are simply the string resource IDs for each of the style names. We use them
     // as identifiers when choosing which style to apply.
@@ -105,7 +113,6 @@ public class MapCoordinatesActivity extends AppCompatActivity
             R.string.style_label_default,
     };
 
-    private static final LatLng LEGANES = new LatLng(40.3377, -3.7722);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -116,10 +123,35 @@ public class MapCoordinatesActivity extends AppCompatActivity
         setContentView(R.layout.activity_map_coordinates);
 
         mLocationSource = new LongPressLocationSource();
+        dbAdapter = new MapDbAdapter(this);
+        dbAdapter.open();
+
+        mRowId = (savedInstanceState == null) ? null :
+                (Long) savedInstanceState.getSerializable(MapDbAdapter.KEY_ROWID);
+        if (mRowId == null) {
+            Bundle extras = getIntent().getExtras();
+            mRowId = extras != null ? extras.getLong(MapDbAdapter.KEY_ROWID) : null;
+        }
 
         SupportMapFragment mapFragment =
                 (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+    }
+
+    public void createCoordinates(View view) {
+
+//        LatLng point = mLocationSource;
+        if (mRowId == null) {
+            long id = dbAdapter.createCoordinates(point.latitude, point.longitude);
+            if (id > 0) {
+                mRowId = id;
+            }
+        } else {
+            dbAdapter.updateCoordinates(mRowId, point.latitude, point.longitude);
+        }
+        setResult(RESULT_OK);
+        dbAdapter.close();
+        finish();
     }
 
     @Override
