@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/ui_galleryview_background"
+    android:background="@drawable/ui_contacts_background"
     android:orientation="vertical"
     tools:context=".HelpActivity">
 
@@ -18,7 +18,7 @@
         android:layout_height="150dp">
 
         <ImageView
-            android:src="@drawable/ui_notepad"
+            android:src="@drawable/ui_contacts"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_centerHorizontal="true"
@@ -38,7 +38,7 @@
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ui_addnote"
+        android:src="@drawable/ui_addphone"
         android:background="@color/transparent"
         android:layout_gravity="bottom|center"
         android:layout_marginBottom="25dp"

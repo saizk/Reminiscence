@@ -208,7 +208,7 @@
                     android:padding="16dp"
                     android:orientation="vertical">
                     <ImageView
-                        android:src="@drawable/ui_help"
+                        android:src="@drawable/ui_contacts"
                         android:layout_width="80dp"
                         android:layout_height="80dp">
                     </ImageView>

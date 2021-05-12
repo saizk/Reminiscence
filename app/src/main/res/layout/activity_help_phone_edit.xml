@@ -58,9 +58,10 @@
             android:layout_height="wrap_content"
             android:onClick="savePhone"
             android:text="@string/edit_phone"
-            android:src="@drawable/ui_setnote"
+            android:src="@drawable/ui_savephone"
             android:background="#f2f2f2"
-            android:textSize="40sp">
+            android:textSize="40sp"
+            android:layout_marginLeft="3dp">
         </ImageButton>
         <ImageButton
             android:id="@+id/call_phone"
@@ -68,7 +69,7 @@
             android:layout_height="wrap_content"
             android:onClick="callPhone"
             android:text="@string/edit_phone"
-            android:src="@drawable/ui_setnote"
+            android:src="@drawable/ui_call"
             android:background="#f2f2f2"
             android:textSize="40sp">
         </ImageButton>
