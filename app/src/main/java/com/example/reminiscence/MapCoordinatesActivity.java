@@ -50,6 +50,8 @@ public class MapCoordinatesActivity extends AppCompatActivity
     private class LongPressLocationSource implements
             LocationSource, OnMapLongClickListener {
 
+        public LatLng coordinates;
+
         private OnLocationChangedListener mListener;
         private boolean mPaused;
 
@@ -72,6 +74,9 @@ public class MapCoordinatesActivity extends AppCompatActivity
                 location.setLongitude(point.longitude);
                 location.setAccuracy(100);
                 mListener.onLocationChanged(location);
+                coordinates = point;
+
+
             }
         }
 
@@ -113,6 +118,15 @@ public class MapCoordinatesActivity extends AppCompatActivity
             R.string.style_label_default,
     };
 
+//    private OnLocationChangedListener mListener;
+
+    /**
+     * Flag to keep track of the activity's lifecycle. This is not strictly necessary in this
+     * case because onMapLongPress events don't occur while the activity containing the map is
+     * paused but is included to demonstrate best practices (e.g., if a background service were
+     * to be used).
+     */
+    private boolean mPaused;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -123,6 +137,7 @@ public class MapCoordinatesActivity extends AppCompatActivity
         setContentView(R.layout.activity_map_coordinates);
 
         mLocationSource = new LongPressLocationSource();
+
         dbAdapter = new MapDbAdapter(this);
         dbAdapter.open();
 
@@ -136,11 +151,39 @@ public class MapCoordinatesActivity extends AppCompatActivity
         SupportMapFragment mapFragment =
                 (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
+
+//        @Override
+//        public void onMyLocationClick(@NonNull Location location) {
+//            Toast.makeText(this, "Current location:\n" + location, Toast.LENGTH_SHORT).show();
+//        }
+//        if (mRowId == null) {
+//            long id = dbAdapter.createCoordinates(mLocationSource.latitude, point.longitude);
+//            if (id > 0) {
+//                mRowId = id;
+//            }
+//        } else {
+//            dbAdapter.updateCoordinates(mRowId, point.latitude, point.longitude);
+//        }
+//        setResult(RESULT_OK);
+//        dbAdapter.close();
+//        finish();
+//    }
+
+
+//    public void onMapLongClick(LatLng point) {
+//        if (mListener != null && !mPaused) {
+//            Location location = new Location("LongPressLocationProvider");
+//            location.setLatitude(point.latitude);
+//            location.setLongitude(point.longitude);
+//            location.setAccuracy(100);
+//            mListener.onLocationChanged(location);
+//        }
     }
 
-    public void createCoordinates(View view) {
+    public void createCoordinates(View view ) {
 
-//        LatLng point = mLocationSource;
+        LatLng point = mLocationSource.coordinates;
         if (mRowId == null) {
             long id = dbAdapter.createCoordinates(point.latitude, point.longitude);
             if (id > 0) {
@@ -152,6 +195,12 @@ public class MapCoordinatesActivity extends AppCompatActivity
         setResult(RESULT_OK);
         dbAdapter.close();
         finish();
+        dbAdapter.open();
+        Cursor maiky = dbAdapter.fetchAllCoordinates();
+        Toast.makeText(getBaseContext(),maiky.toString(),Toast.LENGTH_SHORT).show();
+
+
+
     }
 
     @Override
