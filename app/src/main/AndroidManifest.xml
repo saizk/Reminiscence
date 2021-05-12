@@ -9,10 +9,9 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="com.android.alarm.permission.SET_ALARM" />
-    <uses-permission android:name="android.permission.CALL_PHONE" />
-    <!--<uses-permission android:name="android.permission.MEDIA_CONTENT_CONTROL"/>-->
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.CALL_PHONE" /> <!-- <uses-permission android:name="android.permission.MEDIA_CONTENT_CONTROL"/> -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -21,43 +20,34 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Reminiscence.NoActionBar">
+        <activity android:name=".MapWatchActivity"></activity>
+
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="@string/google_maps_key">
-        </meta-data>
+            android:value="@string/google_maps_key"></meta-data>
 
         <activity android:name=".AlarmActivity" />
-
         <activity android:name=".NotepadActivity" />
-        <activity android:name=".NotepadEditActivity"
-            android:parentActivityName=".NotepadActivity">
-        </activity>
-
+        <activity
+            android:name=".NotepadEditActivity"
+            android:parentActivityName=".NotepadActivity"></activity>
         <activity android:name=".MapActivity" />
-        <activity android:name=".MapCoordinatesActivity"
-            android:theme="@style/Theme.AppCompat.Light.DarkActionBar">
-        </activity>
-
+        <activity
+            android:name=".MapCoordinatesActivity"
+            android:theme="@style/Theme.AppCompat.Light.DarkActionBar"></activity>
         <activity android:name=".ResourcesActivity" />
-
         <activity android:name=".GalleryActivity" />
         <activity android:name=".GalleryAddPhotoActivity" />
         <activity android:name=".GalleryShowActivity" />
-
         <activity android:name=".ContactActivity" />
         <activity android:name=".ContactEditActivity" />
-
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-
-
     </application>
-
-
 
 </manifest>

@@ -14,8 +14,8 @@ public class MapActivity extends AppCompatActivity {
         setContentView(R.layout.activity_map);
     }
 
-    public void onMapClick(View view){
-        Intent intent = new Intent(this, MapCoordinatesActivity.class);
+    public void onMapWatchClick(View view){
+        Intent intent = new Intent(this, MapWatchActivity.class);
         startActivity(intent);
     }
 
