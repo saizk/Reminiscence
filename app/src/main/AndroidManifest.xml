@@ -7,8 +7,9 @@
          location permissions for the "MyLocation" functionality.
     -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="com.android.alarm.permission.SET_ALARM" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="com.android.alarm.permission.SET_ALARM" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
     <!--<uses-permission android:name="android.permission.MEDIA_CONTENT_CONTROL"/>-->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
@@ -24,22 +25,27 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key">
         </meta-data>
-        <activity
-            android:name=".MapActivity"
-            android:theme="@style/Theme.AppCompat.Light.DarkActionBar">
-        </activity>
+
+        <activity android:name=".AlarmActivity" />
+
         <activity android:name=".NotepadActivity" />
-        <activity
-            android:name=".NotepadEditActivity"
+        <activity android:name=".NotepadEditActivity"
             android:parentActivityName=".NotepadActivity">
         </activity>
+
+        <activity android:name=".MapActivity"
+            android:theme="@style/Theme.AppCompat.Light.DarkActionBar">
+        </activity>
+
         <activity android:name=".ResourcesActivity" />
-        <activity android:name=".GalleryAddPhotoActivity" />
+
         <activity android:name=".GalleryActivity" />
+        <activity android:name=".GalleryAddPhotoActivity" />
         <activity android:name=".GalleryShowActivity" />
-        <activity android:name=".AlarmActivity" />
+
         <activity android:name=".HelpActivity" />
         <activity android:name=".HelpPhoneEditActivity" />
+
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

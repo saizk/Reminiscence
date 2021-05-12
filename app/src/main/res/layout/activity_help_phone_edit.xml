@@ -30,6 +30,7 @@
             android:layout_weight="10"
             android:textSize="40sp">
         </EditText>
+
     </LinearLayout>
 
     <EditText
@@ -45,17 +46,34 @@
         android:textStyle="bold"
         android:gravity="center">
     </EditText>
-    <ImageButton
-        android:id="@+id/confirm_phone"
-        android:layout_width="match_parent"
+    <GridLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="savePhone"
-        android:text="@string/edit_phone"
-        android:src="@drawable/ui_setnote"
-        android:background="#f2f2f2"
-        android:textSize="40sp">
-    </ImageButton>
+        android:columnOrderPreserved="false"
+        android:alignmentMode="alignMargins"
+        android:columnCount="2">
+        <ImageButton
+            android:id="@+id/confirm_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="savePhone"
+            android:text="@string/edit_phone"
+            android:src="@drawable/ui_setnote"
+            android:background="#f2f2f2"
+            android:textSize="40sp">
+        </ImageButton>
+        <ImageButton
+            android:id="@+id/call_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="callPhone"
+            android:text="@string/edit_phone"
+            android:src="@drawable/ui_setnote"
+            android:background="#f2f2f2"
+            android:textSize="40sp">
+        </ImageButton>
 
+    </GridLayout>
     <Button
         android:id="@+id/delete_phone"
         android:layout_width="match_parent"

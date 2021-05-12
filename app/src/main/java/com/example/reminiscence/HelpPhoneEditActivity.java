@@ -1,7 +1,9 @@
 package com.example.reminiscence;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -50,19 +52,6 @@ public class HelpPhoneEditActivity extends AppCompatActivity {
         }
     }
 
-    public void deletePhoneHandler(View view){
-        alertDialog("Do you want to delete this phone?");
-    }
-
-    public void deletePhone(){
-        if (mRowId != null) {
-            dbAdapter.deletePhone(mRowId);
-        }
-        setResult(RESULT_OK);
-        dbAdapter.close();
-        finish();
-    }
-
     public void savePhone(View view) {
         String name = mNameText.getText().toString();
         String phone = mPhoneText.getText().toString();
@@ -83,6 +72,26 @@ public class HelpPhoneEditActivity extends AppCompatActivity {
             }
         } else {
             dbAdapter.updatePhone(mRowId, name, phone);
+        }
+        setResult(RESULT_OK);
+        dbAdapter.close();
+        finish();
+    }
+
+    public void callPhone(View view) {
+        Intent dialIntent = new Intent(Intent.ACTION_DIAL );
+        String phone = mPhoneText.getText().toString();
+        dialIntent.setData(Uri.parse("tel:" + phone));
+        startActivity(dialIntent);
+    }
+
+    public void deletePhoneHandler(View view){
+        alertDialog("Do you want to delete this phone?");
+    }
+
+    public void deletePhone(){
+        if (mRowId != null) {
+            dbAdapter.deletePhone(mRowId);
         }
         setResult(RESULT_OK);
         dbAdapter.close();

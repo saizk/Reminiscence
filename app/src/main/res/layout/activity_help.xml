@@ -43,7 +43,6 @@
         android:layout_gravity="bottom|center"
         android:layout_marginBottom="25dp"
         android:onClick="createPhone">
-
     </ImageButton>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
