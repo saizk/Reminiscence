@@ -8,6 +8,7 @@ import androidx.core.content.ContextCompat;
 
 
 import android.content.DialogInterface;
+import android.database.Cursor;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -32,6 +33,7 @@ import com.google.android.gms.maps.GoogleMap.OnMyLocationButtonClickListener;
 import com.google.android.gms.maps.GoogleMap.OnMyLocationClickListener;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 
@@ -84,18 +86,18 @@ public class MapWatchActivity extends AppCompatActivity
     }
 
     private GoogleMap mMap;
+    private MapDbAdapter dbAdapter;
 
     private boolean permissionDenied = false;
     private LongPressLocationSource mLocationSource;
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 11;
 
-    private static final String TAG = MapCoordinatesActivity.class.getSimpleName();
-
+    private static final String TAG = MapWatchActivity.class.getSimpleName();
     private static final String SELECTED_STYLE = "selected_style";
 
     // Stores the ID of the currently selected style, so that we can re-apply it when
     // the activity restores state, for example when the device changes orientation.
-    private int mSelectedStyleId = R.string.style_label_default;
+    private int mSelectedStyleId = R.string.style_label_retro;
 
     // These are simply the string resource IDs for each of the style names. We use them
     // as identifiers when choosing which style to apply.
@@ -113,12 +115,14 @@ public class MapWatchActivity extends AppCompatActivity
         if (savedInstanceState != null) {
             mSelectedStyleId = savedInstanceState.getInt(SELECTED_STYLE);
         }
-        setContentView(R.layout.activity_map_coordinates);
+        setContentView(R.layout.activity_map_watch);
 
         mLocationSource = new LongPressLocationSource();
+        dbAdapter = new MapDbAdapter(this);
+        dbAdapter.open();
 
         SupportMapFragment mapFragment =
-                (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
+                (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map_watch);
         mapFragment.getMapAsync(this);
     }
 
@@ -144,8 +148,13 @@ public class MapWatchActivity extends AppCompatActivity
     @Override
     public void onMapReady(GoogleMap map) {
         mMap = map;
+        Cursor coordCursor = dbAdapter.fetchAllCoordinates();
+        Cursor coordinates = dbAdapter.fetchCoordinates(coordCursor.getCount());
+        double latitude = coordinates.getDouble(1);
+        double longitude = coordinates.getDouble(2);
+        LatLng location = new LatLng(latitude, longitude);
         mMap.setLocationSource(mLocationSource);
-        mMap.addMarker(new MarkerOptions().position(LEGANES).title("#TeamPIÉ headquarters here!"));
+        mMap.addMarker(new MarkerOptions().position(location).title("#Your saved location"));
 //        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(LEGANES, 16));
         mMap.setOnMyLocationButtonClickListener(this);
         mMap.setOnMyLocationClickListener(this);

@@ -50,7 +50,6 @@ public class NotepadActivity extends AppCompatActivity {
 
     private void fillData() {
         Cursor notesCursor = dbAdapter.fetchAllNotes();
-
         // Creamos un array con los campos que queremos mostrar en el listview (sólo el título de la nota)
         String[] from = new String[]{NotepadDbAdapter.KEY_TITLE};
 

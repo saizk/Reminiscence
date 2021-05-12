@@ -23,7 +23,7 @@
         android:layout_alignParentBottom="true"
         android:background="@color/transparent"
         android:layout_marginBottom="5dp"
-        android:onClick="createCoordinates"
+        android:onClick="saveCoordinates"
         android:src="@drawable/ui_setalarm"
         android:text="@string/edit_confirm"
         android:textSize="40sp">

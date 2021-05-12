@@ -74,9 +74,8 @@ public class MapCoordinatesActivity extends AppCompatActivity
                 location.setLongitude(point.longitude);
                 location.setAccuracy(100);
                 mListener.onLocationChanged(location);
+
                 coordinates = point;
-
-
             }
         }
 
@@ -96,6 +95,7 @@ public class MapCoordinatesActivity extends AppCompatActivity
     private EditText latitude;
     private EditText longitude;
     private Long mRowId;
+    private Long last_id;
 
     private boolean permissionDenied = false;
     private LongPressLocationSource mLocationSource;
@@ -181,13 +181,22 @@ public class MapCoordinatesActivity extends AppCompatActivity
 //        }
     }
 
-    public void createCoordinates(View view ) {
+    public void saveCoordinates(View view) {
 
         LatLng point = mLocationSource.coordinates;
+        System.out.println(mRowId);
+        System.out.println(point);
+        System.out.println(last_id);
+        if (point == null){
+            alertDialog("Please keep pressed to select the coordinates");
+            return;
+        }
+
         if (mRowId == null) {
             long id = dbAdapter.createCoordinates(point.latitude, point.longitude);
+            System.out.println(id);
             if (id > 0) {
-                mRowId = id;
+                last_id = id;
             }
         } else {
             dbAdapter.updateCoordinates(mRowId, point.latitude, point.longitude);
@@ -195,12 +204,6 @@ public class MapCoordinatesActivity extends AppCompatActivity
         setResult(RESULT_OK);
         dbAdapter.close();
         finish();
-        dbAdapter.open();
-        Cursor maiky = dbAdapter.fetchAllCoordinates();
-        Toast.makeText(getBaseContext(),maiky.toString(),Toast.LENGTH_SHORT).show();
-
-
-
     }
 
     @Override
@@ -375,4 +378,16 @@ public class MapCoordinatesActivity extends AppCompatActivity
                 .newInstance(true).show(getSupportFragmentManager(), "dialog");
     }
 
+    private void alertDialog(String message) {
+        AlertDialog.Builder dialog=new AlertDialog.Builder(this);
+        dialog.setMessage(message);
+        dialog.setTitle("Reminiscence");
+        dialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                };
+            }
+        );
+        AlertDialog alertDialog=dialog.create();
+        alertDialog.show();
+    }
 }
