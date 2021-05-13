@@ -16,7 +16,7 @@
         tools:ignore="MissingConstraints">
 
         <ImageView
-            android:src="@drawable/ui_gallery"
+            android:src="@drawable/ui_map"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_centerHorizontal="true"
@@ -25,7 +25,7 @@
     </RelativeLayout>
 
     <ImageButton
-        android:src="@drawable/ui_viewgallery"
+        android:src="@drawable/ui_viewmap"
         android:background="#f2f2f2"
         android:layout_marginTop="300dp"
         android:id="@+id/WatchMapButton"
@@ -39,7 +39,7 @@
         app:layout_constraintVertical_bias="0.214" />
 
     <ImageButton
-        android:src="@drawable/ui_addphoto"
+        android:src="@drawable/ui_addcoords"
         android:background="#f2f2f2"
         android:id="@+id/add_photo_button"
         android:layout_width="250dp"

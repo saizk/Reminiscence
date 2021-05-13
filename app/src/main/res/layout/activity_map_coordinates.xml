@@ -24,7 +24,7 @@
         android:background="@color/transparent"
         android:layout_marginBottom="5dp"
         android:onClick="saveCoordinates"
-        android:src="@drawable/ui_setalarm"
+        android:src="@drawable/ui_addcoords"
         android:text="@string/edit_confirm"
         android:textSize="40sp">
     </ImageButton>
