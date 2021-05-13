@@ -9,6 +9,7 @@ import androidx.core.content.ContextCompat;
 
 import android.content.DialogInterface;
 import android.database.Cursor;
+import android.graphics.Color;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -24,11 +25,17 @@ import android.os.Bundle;
 
 
 import android.location.Location;
+
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.Circle;
+import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MapStyleOptions;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.GoogleMap.OnMapLongClickListener;
 import com.google.android.gms.maps.LocationSource;
@@ -69,6 +76,9 @@ public class MapCoordinatesActivity extends AppCompatActivity
         @Override
         public void onMapLongClick(LatLng point) {
             if (mListener != null && !mPaused) {
+//                if (coordinates != null){
+//                    DraggableCircle previous_circle = new DraggableCircle(coordinates, 0);
+//                }
                 Location location = new Location("LongPressLocationProvider");
                 location.setLatitude(point.latitude);
                 location.setLongitude(point.longitude);
@@ -76,6 +86,7 @@ public class MapCoordinatesActivity extends AppCompatActivity
                 mListener.onLocationChanged(location);
 
                 coordinates = point;
+                DraggableCircle circle = new DraggableCircle(coordinates, 1000);
             }
         }
 
@@ -151,38 +162,9 @@ public class MapCoordinatesActivity extends AppCompatActivity
         SupportMapFragment mapFragment =
                 (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
-
-
-//        @Override
-//        public void onMyLocationClick(@NonNull Location location) {
-//            Toast.makeText(this, "Current location:\n" + location, Toast.LENGTH_SHORT).show();
-//        }
-//        if (mRowId == null) {
-//            long id = dbAdapter.createCoordinates(mLocationSource.latitude, point.longitude);
-//            if (id > 0) {
-//                mRowId = id;
-//            }
-//        } else {
-//            dbAdapter.updateCoordinates(mRowId, point.latitude, point.longitude);
-//        }
-//        setResult(RESULT_OK);
-//        dbAdapter.close();
-//        finish();
-//    }
-
-
-//    public void onMapLongClick(LatLng point) {
-//        if (mListener != null && !mPaused) {
-//            Location location = new Location("LongPressLocationProvider");
-//            location.setLatitude(point.latitude);
-//            location.setLongitude(point.longitude);
-//            location.setAccuracy(100);
-//            mListener.onLocationChanged(location);
-//        }
     }
 
     public void saveCoordinates(View view) {
-
         LatLng point = mLocationSource.coordinates;
         System.out.println(mRowId);
         System.out.println(point);
@@ -191,10 +173,8 @@ public class MapCoordinatesActivity extends AppCompatActivity
             alertDialog("Please keep pressed to select the coordinates");
             return;
         }
-
         if (mRowId == null) {
             long id = dbAdapter.createCoordinates(point.latitude, point.longitude);
-            System.out.println(id);
             if (id > 0) {
                 last_id = id;
             }
@@ -203,6 +183,7 @@ public class MapCoordinatesActivity extends AppCompatActivity
         }
         setResult(RESULT_OK);
         dbAdapter.close();
+        Toast.makeText(getBaseContext(), "Marker saved", Toast.LENGTH_SHORT).show();
         finish();
     }
 
@@ -230,7 +211,7 @@ public class MapCoordinatesActivity extends AppCompatActivity
         mMap = map;
         mMap.setLocationSource(mLocationSource);
         mMap.addMarker(new MarkerOptions().position(LEGANES).title("#TeamPIÉ headquarters here!"));
-//        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(LEGANES, 16));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(LEGANES, 12));
         mMap.setOnMyLocationButtonClickListener(this);
         mMap.setOnMyLocationClickListener(this);
         mMap.setOnMapLongClickListener(mLocationSource);
@@ -390,4 +371,24 @@ public class MapCoordinatesActivity extends AppCompatActivity
         AlertDialog alertDialog=dialog.create();
         alertDialog.show();
     }
+
+    private class DraggableCircle {
+        private final Marker mCenterMarker;
+        private final Circle mCircle;
+        private double mRadiusMeters;
+
+        public DraggableCircle(LatLng center, double radiusMeters) {
+            mRadiusMeters = radiusMeters;
+            mCenterMarker = mMap.addMarker(new MarkerOptions()
+                    .position(center)
+                    .draggable(true));
+            mCircle = mMap.addCircle(new CircleOptions()
+                    .center(center)
+                    .radius(radiusMeters)
+                    .strokeWidth(2)
+                    .strokeColor(Color.BLACK)
+                    .fillColor(0x30ff0000));
+        }
+    }
+
 }

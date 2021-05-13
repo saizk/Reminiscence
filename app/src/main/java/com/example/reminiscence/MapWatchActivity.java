@@ -9,6 +9,7 @@ import androidx.core.content.ContextCompat;
 
 import android.content.DialogInterface;
 import android.database.Cursor;
+import android.graphics.Color;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -21,11 +22,16 @@ import android.os.Bundle;
 
 
 import android.location.Location;
+
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.Circle;
+import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MapStyleOptions;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.GoogleMap.OnMapLongClickListener;
 import com.google.android.gms.maps.LocationSource;
@@ -155,12 +161,14 @@ public class MapWatchActivity extends AppCompatActivity
         LatLng location = new LatLng(latitude, longitude);
         mMap.setLocationSource(mLocationSource);
         mMap.addMarker(new MarkerOptions().position(location).title("#Your saved location"));
-//        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(LEGANES, 16));
+        DraggableCircle circle = new DraggableCircle(location, 1000);
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(location, 12));
         mMap.setOnMyLocationButtonClickListener(this);
         mMap.setOnMyLocationClickListener(this);
         mMap.setOnMapLongClickListener(mLocationSource);
         mMap.setMyLocationEnabled(true);
         setSelectedStyle();
+        dbAdapter.close();
     }
 
     @Override
@@ -301,6 +309,25 @@ public class MapWatchActivity extends AppCompatActivity
     private void showMissingPermissionError() {
         PermissionUtils.PermissionDeniedDialog
                 .newInstance(true).show(getSupportFragmentManager(), "dialog");
+    }
+
+    private class DraggableCircle {
+        private final Marker mCenterMarker;
+        private final Circle mCircle;
+        private double mRadiusMeters;
+
+        public DraggableCircle(LatLng center, double radiusMeters) {
+            mRadiusMeters = radiusMeters;
+            mCenterMarker = mMap.addMarker(new MarkerOptions()
+                    .position(center)
+                    .draggable(true));
+            mCircle = mMap.addCircle(new CircleOptions()
+                    .center(center)
+                    .radius(radiusMeters)
+                    .strokeWidth(2)
+                    .strokeColor(Color.BLACK)
+                    .fillColor(0x30ff0000));
+        }
     }
 
 }
