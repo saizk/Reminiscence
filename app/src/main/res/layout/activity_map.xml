@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MapActivity"
-    android:background="@drawable/ui_addgallery_background">
+    android:background="@drawable/ui_maps_background">
 
     <RelativeLayout
         android:layout_marginTop="35dp"
@@ -43,9 +43,10 @@
         android:background="#f2f2f2"
         android:id="@+id/add_photo_button"
         android:layout_width="250dp"
-        android:layout_height="100dp"
+        android:layout_height="120dp"
         android:onClick="onCoordinatesSet"
         android:text="Add new photo"
+        android:layout_marginBottom="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
